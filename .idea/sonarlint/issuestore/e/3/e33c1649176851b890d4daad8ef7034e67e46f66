@@ -1,9 +1,9 @@
 
-b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(âÂ‹ê8ÚÒéÍù1
-b	java:S112("FDefine and throw a dedicated exception instead of using a generic one.(´ÅåÉ8ÚÒéÍù1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8àÒéÍù1
-_
-java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8àÒéÍù1
-d
-java:S20940"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8ëÒéÍù1
+ˆ	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(âÂ‹ê8ÿ„Öàù1J$27bf84df-8caa-4697-977d-0b0ee842c813
+ˆ	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(´ÅåÉ8€…Öàù1J$710e71d5-511e-4cfc-9664-90571627e968
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8„…Öàù1J$919bb9ca-d3f0-432f-820d-45fa0218fd6b
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8……Öàù1J$f23c930a-3ef3-475b-aa26-7201fff5177a
+Š
+java:S2094/"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8Œ…Öàù1J$e2d13385-4c7d-4bc1-8ee9-86f938f7e099

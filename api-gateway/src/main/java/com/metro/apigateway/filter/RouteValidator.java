@@ -3,17 +3,15 @@ package com.metro.apigateway.filter;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static com.metro.constants.SecurityConstants.AUTH_URL;
+
 @Component
 public class RouteValidator {
-    public static final List<String> openApiEndPoints = List.of(
-            "/api/auth/signin",
-            "/api/auth/signup",
-            "/api/auth/validate"
-    );
 
     public Predicate<ServerHttpRequest> isSecured =
-            request -> openApiEndPoints.stream().noneMatch(uri -> request.getURI().getPath().contains(uri));
+            request -> Arrays.stream(AUTH_URL).noneMatch(uri -> request.getURI().getPath().contains(uri));
 }

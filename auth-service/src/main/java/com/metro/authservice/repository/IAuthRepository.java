@@ -1,10 +1,10 @@
 package com.metro.authservice.repository;
 
-import com.metro.authservice.entity.User;
+import com.metro.shared.entity.user.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface IAuthRepository extends JpaRepository<User,Long> {
-    Optional<User> findByEmail(String email);
+public interface IAuthRepository extends JpaRepository<Users,Long> {
+    Optional<Users> findByEmail(String email);
 }

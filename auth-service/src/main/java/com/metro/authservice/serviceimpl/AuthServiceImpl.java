@@ -1,13 +1,14 @@
 package com.metro.authservice.serviceimpl;
 
-import com.metro.authservice.entity.User;
 import com.metro.authservice.payload.request.SignInRequest;
 import com.metro.authservice.payload.request.SignUpRequest;
 import com.metro.authservice.payload.response.SignInResponse;
 import com.metro.authservice.payload.response.SignUpResponse;
+import com.metro.authservice.payload.response.TokenStatus;
 import com.metro.authservice.repository.IAuthRepository;
 import com.metro.authservice.service.IAuthService;
 import com.metro.authservice.service.IJwtService;
+import com.metro.shared.entity.user.Users;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,9 +30,9 @@ public class AuthServiceImpl implements IAuthService {
 
     @Override
     public SignUpResponse signUp(SignUpRequest signUpRequest) {
-        User user = mapper.map(signUpRequest, User.class);
+        Users user = mapper.map(signUpRequest, Users.class);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User savedUser = authRepo.save(user);
+        Users savedUser = authRepo.save(user);
         return mapper.map(savedUser, SignUpResponse.class);
     }
 
@@ -51,12 +52,9 @@ public class AuthServiceImpl implements IAuthService {
     }
 
     @Override
-    public String validateToken(String token) {
-        try {
-            jwtService.validateToken(token);
-            return "Token is valid";
-        } catch (Exception e) {
-            return "Invalid token: " + e.getMessage();
-        }
+    public TokenStatus validateToken(String token) {
+        TokenStatus tokenStatus = new TokenStatus();
+        tokenStatus.setTokenValid(jwtService.validateToken(token));
+        return tokenStatus;
     }
 }

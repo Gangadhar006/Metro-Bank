@@ -14,4 +14,5 @@ public class SignUpResponse {
     private String email;
     private String password;
     private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

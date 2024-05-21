@@ -15,12 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import static com.metro.constants.SecurityConstants.SECRET;
+import static com.metro.constants.SecurityConstants.TOKEN_EXPIRATION;
 
 @Component
 public class JwtServiceImpl implements IJwtService {
-
-    public String SECRET="C1A3B219C5F6E874D5A37BC7F813E9D6CE0B3F7A51612E9B3B0346A791C04C6A";
-
 
     @Override
     public String extractEmail(String token) {
@@ -55,11 +54,16 @@ public class JwtServiceImpl implements IJwtService {
         return (email.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    public void validateToken(String token) {
-        Jwts.parserBuilder()
-                .setSigningKey(getSignKey())
-                .build()
-                .parseClaimsJws(token);
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder()
+                    .setSigningKey(getSignKey())
+                    .build()
+                    .parseClaimsJws(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override
@@ -73,7 +77,7 @@ public class JwtServiceImpl implements IJwtService {
                 .setClaims(claims)
                 .setSubject(email)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 2000*60*24))
+                .setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
     }
 

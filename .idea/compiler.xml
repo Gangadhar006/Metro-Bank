@@ -7,14 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="auth-service" />
+        <module name="balance-service" />
         <module name="api-gateway" />
         <module name="transaction-service" />
-        <module name="auth-service" />
+        <module name="shared-kit" />
+        <module name="constants-kit" />
         <module name="account-service" />
         <module name="service-registry" />
-        <module name="balance-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="constants-library" target="17" />
+      <module name="shared" target="17" />
+      <module name="shared-library" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -23,7 +30,12 @@
       <module name="api-gateway" options="-parameters" />
       <module name="auth-service" options="-parameters" />
       <module name="balance-service" options="-parameters" />
+      <module name="constants-kit" options="-parameters" />
+      <module name="constants-library" options="-parameters" />
       <module name="service-registry" options="-parameters" />
+      <module name="shared" options="-parameters" />
+      <module name="shared-kit" options="-parameters" />
+      <module name="shared-library" options="-parameters" />
       <module name="transaction-service" options="-parameters" />
     </option>
   </component>

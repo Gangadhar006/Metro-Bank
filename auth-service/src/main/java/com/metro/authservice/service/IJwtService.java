@@ -9,5 +9,5 @@ public interface IJwtService {
 
     Boolean isTokenValid(String token, UserDetails userDetails);
 
-    void validateToken(String token);
+    boolean validateToken(String token);
 }

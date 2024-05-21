@@ -1,7 +1,7 @@
 package com.metro.authservice.config;
 
-import com.metro.authservice.entity.User;
 import com.metro.authservice.repository.IAuthRepository;
+import com.metro.shared.entity.user.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,7 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Optional<User> user = authRepo.findByEmail(email);
+        Optional<Users> user = authRepo.findByEmail(email);
         return user.map(CustomUserDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found with email: " + email));
     }

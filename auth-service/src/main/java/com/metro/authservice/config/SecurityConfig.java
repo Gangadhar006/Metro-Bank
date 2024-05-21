@@ -18,6 +18,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.metro.constants.SecurityConstants.AUTH_URL;
+import static com.metro.constants.SecurityConstants.SWAGGER_URL;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -28,14 +31,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                                .requestMatchers("/api/auth/signin",
-                                        "/api/auth/signup",
-                                        "/api/auth/validate").permitAll()
-                                .requestMatchers("/api/user/**",
-                                        "/swagger-ui/**",
-                                        "/swagger-resources/**",
-                                        "/v3/api-docs/**").permitAll()
-                                .anyRequest().authenticated()
+                        .requestMatchers(AUTH_URL).permitAll()
+                        .requestMatchers(SWAGGER_URL).permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

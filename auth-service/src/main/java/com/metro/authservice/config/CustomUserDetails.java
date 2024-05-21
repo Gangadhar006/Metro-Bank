@@ -1,6 +1,6 @@
 package com.metro.authservice.config;
 
-import com.metro.authservice.entity.User;
+import com.metro.shared.entity.user.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,7 +14,7 @@ public class CustomUserDetails implements UserDetails {
     private final String password;
     private final List<GrantedAuthority> authorities;
 
-    public CustomUserDetails(User user) {
+    public CustomUserDetails(Users user) {
         email = user.getEmail();
         password = user.getPassword();
         authorities = List.of();
