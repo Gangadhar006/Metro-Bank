@@ -1,0 +1,5 @@
+
+o
+java:S1104"RMake SECRET a static final constant or non-public and provide accessors if needed.(ρνΰ8¶£ω1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±Ο•)8¶£ω1
+m	java:S116"QRename this field "SECRET" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ρνΰ8¶£ω1
